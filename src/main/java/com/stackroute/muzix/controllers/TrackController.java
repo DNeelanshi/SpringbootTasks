@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1")
+@ControllerAdvice(basePackages="com.stackroute.muzix")
 public class TrackController {
 
 
@@ -26,6 +27,7 @@ public class TrackController {
     }
 
 
+    @ExceptionHandler(TrackAlreadyExistsException.class)
     @PostMapping("track")
     public ResponseEntity<?> saveTrack( Track track){
 
@@ -84,6 +86,7 @@ public class TrackController {
 
     }
 
+    @ExceptionHandler(TrackNotFoundException.class)
     @PutMapping("track/{id}")
     public ResponseEntity<?> updateTrack( int id,Track track){
 
