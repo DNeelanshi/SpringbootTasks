@@ -84,17 +84,17 @@ public class TrackController {
 
     }
 
-    @PutMapping("track")
-    public ResponseEntity<?> updateTrack( Track track){
+    @PutMapping("track/{id}")
+    public ResponseEntity<?> updateTrack( int id,Track track){
 
         ResponseEntity responseEntity;
 
         try{
-            trackService.saveTrack(track);
+            trackService.UpdateTrack(id,track);
             responseEntity = new ResponseEntity<String>("Succesfully updated", HttpStatus.CREATED);
 
 
-        }catch(Exception e){
+        }catch(TrackNotFoundException e){
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
 
         }

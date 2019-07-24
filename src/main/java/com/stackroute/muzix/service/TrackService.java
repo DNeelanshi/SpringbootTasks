@@ -19,5 +19,5 @@ public interface TrackService {
     public List<Track> getTrackbyName(String name);
 
 
-//    public Track UpdateTrack(Track track);
+    public Track UpdateTrack(int id, Track track)throws TrackNotFoundException;
 }
