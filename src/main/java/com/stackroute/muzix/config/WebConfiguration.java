@@ -22,27 +22,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class WebConfiguration {
 
-    private final
-    TrackService trackService;
-
-    @Autowired
-    public WebConfiguration(TrackService trackService) {
-        this.trackService = trackService;
-    }
-
-    @EventListener
-    public void handleContextRefreshEvent(ContextRefreshedEvent cfr) {
-        try {
-            trackService.saveTrack(new Track(1,"Summer","Calvin Harris"));
-            trackService.saveTrack(new Track(2,"Love me like","Olivia"));
-            System.out.println("Context Refreshed");
-        } catch (TrackAlreadyExistsException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
     @Bean
     ServletRegistrationBean h2servletRegistration(){
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new WebServlet());
