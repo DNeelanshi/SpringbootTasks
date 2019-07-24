@@ -4,6 +4,7 @@ import com.stackroute.muzix.domain.Track;
 import com.stackroute.muzix.exception.TrackAlreadyExistsException;
 import com.stackroute.muzix.exception.TrackNotFoundException;
 import com.stackroute.muzix.service.TrackService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,7 @@ public class TrackController {
 
     TrackService trackService;
 
+    @Autowired
     public TrackController(TrackService trackService) {
         this.trackService = trackService;
     }
