@@ -5,6 +5,7 @@ import com.stackroute.muzix.exception.TrackAlreadyExistsException;
 import com.stackroute.muzix.exception.TrackNotFoundException;
 import com.stackroute.muzix.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
@@ -20,6 +21,9 @@ public class TrackController {
 
 
     TrackService trackService;
+
+    @Value("${exceptionMsg}")
+    String expmsg;
 
     @Autowired
     public TrackController(TrackService trackService) {
@@ -53,7 +57,7 @@ public class TrackController {
             try {
                 responseEntity = new ResponseEntity <List<Track>>(trackService.getAllTracks(),HttpStatus.OK);
             } catch (TrackNotFoundException e) {
-                responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+                responseEntity = new ResponseEntity<String>(expmsg, HttpStatus.CONFLICT);
 
                 e.printStackTrace();
             }
@@ -72,7 +76,7 @@ public class TrackController {
                 responseEntity = new ResponseEntity<String>("Succesfully deleted", HttpStatus.CREATED);
 
             }else{
-                responseEntity = new ResponseEntity<String>("Something went wrong", HttpStatus.CONFLICT);
+                responseEntity = new ResponseEntity<String>( expmsg, HttpStatus.CONFLICT);
 
             }
 
