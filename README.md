@@ -25,12 +25,4 @@ b. Display saved track.
 c. Update comments of saved track.
 d. Remove track
 
-5 Non-Functional
-Requirements
-
-1. App should be accessible from any location with access
-to the Internet.
-2. App should be responsive to display consistently across
-multiple device screens.
-3. App should have an intuitive UI that can be operated by
-novice expert Internet users.
+Perform MOCKITO test cases.
