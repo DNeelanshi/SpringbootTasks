@@ -19,7 +19,7 @@ import java.util.List;
 public class TrackController {
 
 
-    TrackService trackService;
+   private TrackService trackService;
 
     @Autowired
     public TrackController(TrackService trackService) {
