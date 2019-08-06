@@ -109,6 +109,9 @@ public class TrackController {
 
 
         }catch(TrackNotFoundException e){
+            responseEntity = new ResponseEntity<String>(exp, HttpStatus.CONFLICT);
+
+        }catch(Exception e){
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
 
         }
